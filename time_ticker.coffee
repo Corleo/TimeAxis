@@ -1,21 +1,20 @@
-AdaptiveTicker = require "models/tickers/adaptive_ticker"
-CompositeTicker = require "models/tickers/composite_ticker"
+import {CompositeTicker} from "models/tickers/composite_ticker"
+import {AdaptiveTicker} from "models/tickers/adaptive_ticker"
 
 ONE_MILLI = 1e-3
 ONE_SECOND = 1.0
 ONE_MINUTE = 60.0 * ONE_SECOND
 ONE_HOUR = 60 * ONE_MINUTE
 
-# https://github.com/bokeh/bokeh/blob/0.12.3/bokehjs/src/coffee/models/tickers/datetime_ticker.coffee
 
-class TimeTicker extends CompositeTicker.Model
+export class TimeTicker extends CompositeTicker
     type: 'TimeTicker'
 
     @override {
         num_minor_ticks: 5
         tickers: () -> [
             # Sub-seconds.
-            new AdaptiveTicker.Model({
+            new AdaptiveTicker({
                 mantissas: [1, 2, 5],
                 base: 10,
                 min_interval: 1e-9,
@@ -24,7 +23,7 @@ class TimeTicker extends CompositeTicker.Model
             }),
 
             # Seconds, minutes.
-            new AdaptiveTicker.Model({
+            new AdaptiveTicker({
                 mantissas: [1, 2, 5, 10, 15, 20, 30],
                 base: 60,
                 min_interval: ONE_SECOND,
@@ -33,15 +32,12 @@ class TimeTicker extends CompositeTicker.Model
             }),
 
             # Hours.
-            new AdaptiveTicker.Model({
+            new AdaptiveTicker({
                 mantissas: [1, 2, 4, 6, 8, 12],
-                base: 24.0,
+                base: 24,
                 min_interval: ONE_HOUR,
                 max_interval: null,
                 num_minor_ticks: 4
             })
         ]
     }
-
-module.exports =
-    Model: TimeTicker

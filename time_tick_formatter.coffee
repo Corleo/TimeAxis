@@ -1,7 +1,5 @@
-TickFormatter = require "models/formatters/tick_formatter"
-p = require "core/properties"
-
-# https://github.com/bokeh/bokeh/blob/0.12.3/bokehjs/src/coffee/models/formatters/datetime_tick_formatter.coffee
+import {TickFormatter} from "models/formatters/tick_formatter"
+import * as p from "core/properties"
 
 _pad = (num, size=2) ->
     [i, j] = String(num).split "."
@@ -166,7 +164,7 @@ _formatter = (tick, resol, _formats) ->
             )
         )
 
-class TimeTickFormatter extends TickFormatter.Model
+export class TimeTickFormatter extends TickFormatter
     type: 'TimeTickFormatter'
 
     @define {
@@ -233,6 +231,3 @@ class TimeTickFormatter extends TickFormatter.Model
         console.log "ticks: [#{ticks}]"
 
         return labels
-
-module.exports =
-    Model: TimeTickFormatter

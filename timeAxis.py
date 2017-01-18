@@ -1,5 +1,5 @@
 from bokeh.core.properties import Override, List, String
-from bokeh.models import CompositeTicker, AdaptiveTicker, LinearAxis, TickFormatter
+from bokeh.models import CompositeTicker, AdaptiveTicker, TickFormatter, LinearAxis
 
 # Globals
 BOKEH_DEV = True
@@ -69,10 +69,6 @@ class TimeTickFormatter(TickFormatter):
     By default, only the first format string passed for each time scale
     will be used. By default, all leading zeros are stripped away from
     the formatted labels.
-
-    https://github.com/bokeh/bokeh/blob/master/bokeh/models/formatters.py
-    http://bokeh.pydata.org/en/latest/docs/reference/models/formatters.html#bokeh.models.formatters.DatetimeTickFormatter
-
     """
     __implementation__ = 'time_tick_formatter.coffee'
 
