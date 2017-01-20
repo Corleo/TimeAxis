@@ -1,23 +1,24 @@
 import {CompositeTicker} from "models/tickers/composite_ticker"
 import {AdaptiveTicker} from "models/tickers/adaptive_ticker"
 
-ONE_MILLI = 1e-3
+ONE_NANO   = 1e-9
+ONE_MILLI  = 1e-3
 ONE_SECOND = 1.0
 ONE_MINUTE = 60.0 * ONE_SECOND
-ONE_HOUR = 60 * ONE_MINUTE
+ONE_HOUR   = 60 * ONE_MINUTE
 
 
 export class TimeTicker extends CompositeTicker
     type: 'TimeTicker'
 
     @override {
-        num_minor_ticks: 5
+        # num_minor_ticks: 5
         tickers: () -> [
             # Sub-seconds.
             new AdaptiveTicker({
                 mantissas: [1, 2, 5],
                 base: 10,
-                min_interval: 1e-9,
+                min_interval: ONE_NANO,
                 max_interval: 500 * ONE_MILLI,
                 num_minor_ticks: 5
             }),

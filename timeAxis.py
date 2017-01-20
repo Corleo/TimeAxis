@@ -2,11 +2,11 @@ from bokeh.core.properties import Override, List, String
 from bokeh.models import CompositeTicker, AdaptiveTicker, TickFormatter, LinearAxis
 
 # Globals
-BOKEH_DEV = True
-ONE_MILLI = 1e-3
+ONE_NANO   = 1e-9
+ONE_MILLI  = 1e-3
 ONE_SECOND = 1.0
 ONE_MINUTE = 60.0 * ONE_SECOND
-ONE_HOUR = 60 * ONE_MINUTE
+ONE_HOUR   = 60 * ONE_MINUTE
 
 
 def _TIME_TICK_FORMATTER_HELP(field):
@@ -26,7 +26,7 @@ class TimeTicker(CompositeTicker):
         AdaptiveTicker(
             mantissas=[1, 2, 5],
             base=10,
-            min_interval=1e-9,
+            min_interval=ONE_NANO,
             max_interval=500 * ONE_MILLI,
             num_minor_ticks=5
         ),

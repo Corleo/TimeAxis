@@ -23,96 +23,97 @@ _formatter = (tick, resol, _formats) ->
     nano    = String(parseInt nano)
 
     # get minor non zero resolution
-    resol = switch
-        when resol in ["hours", "hourmin"] then (
-            resol
-        )
-        when resol == "minutes" then (
-            if min != "0"
+    if tick != 0
+        resol = switch
+            when resol in ["hours", "hourmin"] then (
                 resol
-            else
-                "hours"
-        )
-        when resol == "minsec" then (
-            if min != "0" or sec != "0"
-                resol
-            else
-                "hours"
-        )
-        when resol == "seconds" then (
-            if sec != "0"
-                resol
-            else if min != "0"
-                "minutes"
-            else
-                "hours"
-        )
-        when resol == "secmillisec" then (
-            if sec != "0" or milli != "0"
-                resol
-            else if min != "0"
-                "minutes"
-            else
-                "hours"
-        )
-        when resol == "milliseconds" then (
-            if milli != "0"
-                resol
-            else if sec != "0"
-                "seconds"
-            else if min != "0"
-                "minutes"
-            else
-                "hours"
-        )
-        when resol == "millimicrosec" then (
-            if milli != "0" or micro != "0"
-                resol
-            else if sec != "0"
-                "seconds"
-            else if min != "0"
-                "minutes"
-            else
-                "hours"
-        )
-        when resol == "microseconds" then (
-            if micro != "0"
-                resol
-            else if milli != "0"
-                "milliseconds"
-            else if sec != "0"
-                "seconds"
-            else if min != "0"
-                "minutes"
-            else
-                "hours"
-        )
-        when resol == "micronanosec" then (
-            if micro != "0" or nano != "0"
-                resol
-            else if milli != "0"
-                "milliseconds"
-            else if sec != "0"
-                "seconds"
-            else if min != "0"
-                "minutes"
-            else
-                "hours"
-        )
-        when resol == "nanoseconds" then (
-            if nano != "0"
-                resol
-            else if micro != "0"
-                "microseconds"
-            else if milli != "0"
-                "milliseconds"
-            else if sec != "0"
-                "seconds"
-            else if min != "0"
-                "minutes"
-            else
-                "hours"
-        )
+            )
+            when resol == "minutes" then (
+                if min != "0"
+                    resol
+                else
+                    "hours"
+            )
+            when resol == "minsec" then (
+                if min != "0" or sec != "0"
+                    resol
+                else
+                    "hours"
+            )
+            when resol == "seconds" then (
+                if sec != "0"
+                    resol
+                else if min != "0"
+                    "minutes"
+                else
+                    "hours"
+            )
+            when resol == "secmillisec" then (
+                if sec != "0" or milli != "0"
+                    resol
+                else if min != "0"
+                    "minutes"
+                else
+                    "hours"
+            )
+            when resol == "milliseconds" then (
+                if milli != "0"
+                    resol
+                else if sec != "0"
+                    "seconds"
+                else if min != "0"
+                    "minutes"
+                else
+                    "hours"
+            )
+            when resol == "millimicrosec" then (
+                if milli != "0" or micro != "0"
+                    resol
+                else if sec != "0"
+                    "seconds"
+                else if min != "0"
+                    "minutes"
+                else
+                    "hours"
+            )
+            when resol == "microseconds" then (
+                if micro != "0"
+                    resol
+                else if milli != "0"
+                    "milliseconds"
+                else if sec != "0"
+                    "seconds"
+                else if min != "0"
+                    "minutes"
+                else
+                    "hours"
+            )
+            when resol == "micronanosec" then (
+                if micro != "0" or nano != "0"
+                    resol
+                else if milli != "0"
+                    "milliseconds"
+                else if sec != "0"
+                    "seconds"
+                else if min != "0"
+                    "minutes"
+                else
+                    "hours"
+            )
+            when resol == "nanoseconds" then (
+                if nano != "0"
+                    resol
+                else if micro != "0"
+                    "microseconds"
+                else if milli != "0"
+                    "milliseconds"
+                else if sec != "0"
+                    "seconds"
+                else if min != "0"
+                    "minutes"
+                else
+                    "hours"
+            )
 
     unit = _formats[resol][0]
 
