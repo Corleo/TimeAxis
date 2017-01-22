@@ -21,7 +21,7 @@ class TimeTicker(CompositeTicker):
     """
     __implementation__ = 'time_ticker.coffee'
 
-    num_minor_ticks = Override(default=5)
+    num_minor_ticks = Override(default=4)
     tickers = Override(default=lambda: [
         AdaptiveTicker(
             mantissas=[1, 2, 5],

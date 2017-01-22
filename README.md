@@ -31,29 +31,16 @@ So this custom axis has the following features:
 * The base value for TimeAxis is second: value 3.5 will be interpreted as 3.5s, 0.0003 as 300us and so on.
 
 
-## Setting custom axis
+## Setting custom axis and grid
 
-I couldn't find a proper way to set a custom axis. As a workaround I used the `add_layout` method and disabled the default axis with `x_axis_type=None` on `figure()`:
+I couldn't find a proper method to set this custom axis so, as a workaround, I disabled the default axis with `x_axis_type=None` in `figure()` and used the `add_layout` method to set my custom axis and grid:
 
 ```python
 p = figure(..., x_axis_type=None)
-p.add_layout(TimeAxis(), 'below')
+xaxis = TimeAxis()
+p.add_layout(xaxis, 'below')
+p.add_layout(Grid(dimension=0, ticker=xaxis.ticker))
 ```
-
-But this method don't set the axis correctly - it shows the scales but don't draws the xaxis.
-![new issue](img/axis_04.png)
-
-So I tried to set `ticker` and `formatter` separately as follows:
-
-```python
-p = figure(..., x_axis_type='linear')
-p.xaxis[0].ticker = TimeTicker()
-p.xaxis[0].formatter = TimeTickFormatter()
-```
-
-But again the xaxis lines aren't being drawn correctly - they don't follow my custom ticks.
-![another issue](img/axis_06.png)
-
 
 ## Testing
 

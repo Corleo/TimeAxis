@@ -12,7 +12,7 @@ export class TimeTicker extends CompositeTicker
     type: 'TimeTicker'
 
     @override {
-        # num_minor_ticks: 5
+        num_minor_ticks: 4
         tickers: () -> [
             # Sub-seconds.
             new AdaptiveTicker({

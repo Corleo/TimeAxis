@@ -1,6 +1,6 @@
 from math import sin, pi
 from bokeh.layouts import row
-from bokeh.models import ColumnDataSource
+from bokeh.models import ColumnDataSource, Grid
 from bokeh.plotting import figure, curdoc
 from timeAxis import TimeAxis
 
@@ -18,7 +18,10 @@ plot1 = figure(
     tools=tools, active_scroll='xwheel_zoom'
 )
 plot1.line('x', 'y', source=source1)
-plot1.add_layout(TimeAxis(), 'below')
+
+xaxis = TimeAxis()
+plot1.add_layout(xaxis, 'below')
+plot1.add_layout(Grid(dimension=0, ticker=xaxis.ticker))
 
 plot2 = figure(
     title="Regular Axis", title_location="above",
