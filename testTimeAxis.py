@@ -22,6 +22,7 @@ plot1.line('x', 'y', source=source1)
 xaxis = TimeAxis()
 plot1.add_layout(xaxis, 'below')
 plot1.add_layout(Grid(dimension=0, ticker=xaxis.ticker))
+plot1.x_range.min_interval = 2 * xaxis.ticker.tickers[0].min_interval
 
 plot2 = figure(
     title="Regular Axis", title_location="above",

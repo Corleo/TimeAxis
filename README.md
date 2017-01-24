@@ -40,6 +40,7 @@ p = figure(..., x_axis_type=None)
 xaxis = TimeAxis()
 p.add_layout(xaxis, 'below')
 p.add_layout(Grid(dimension=0, ticker=xaxis.ticker))
+p.x_range.min_interval = 2 * xaxis.ticker.tickers[0].min_interval
 ```
 
 ## Testing
